@@ -1,0 +1,15 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="HeyManNiceShot.App"
+             RequestedThemeVariant="Dark">
+
+    <Application.Resources>
+        <ResourceInclude Source="avares://HeyManNiceShot/Theme/Tokens.axaml" />
+    </Application.Resources>
+
+    <Application.Styles>
+        <FluentTheme />
+        <StyleInclude Source="avares://HeyManNiceShot/Theme/Styles.axaml" />
+    </Application.Styles>
+
+</Application>

@@ -1,0 +1,92 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:HeyManNiceShot.Editor"
+        x:Class="HeyManNiceShot.Editor.EditorWindow"
+        Title="HeyManNiceShot Editor"
+        Width="1080" Height="720"
+        MinWidth="720" MinHeight="480"
+        TransparencyLevelHint="Mica"
+        Background="{DynamicResource SurfaceBrush}"
+        WindowStartupLocation="CenterScreen">
+
+    <DockPanel LastChildFill="True">
+
+        <!-- Top toolbar -->
+        <Border DockPanel.Dock="Top" Classes="top-toolbar">
+            <Grid ColumnDefinitions="Auto,*,Auto">
+
+                <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="2">
+                    <Button x:Name="UndoBtn" Classes="icon-button" Click="OnUndoClick" ToolTip.Tip="Undo (Ctrl+Z)">↶</Button>
+                    <Button x:Name="RedoBtn" Classes="icon-button" Click="OnRedoClick" ToolTip.Tip="Redo (Ctrl+Y)">↷</Button>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="12" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="Color" Foreground="{DynamicResource TextDimBrush}" VerticalAlignment="Center" />
+                    <ColorPicker x:Name="ToolColorPicker" Color="#FF4D4F" Width="40" Height="28" ColorChanged="OnToolColorChanged" />
+                    <TextBlock Text="Stroke" Foreground="{DynamicResource TextDimBrush}" VerticalAlignment="Center" />
+                    <Slider x:Name="ToolStrokeSlider" Width="120" Minimum="1" Maximum="20" Value="4" ValueChanged="OnToolStrokeChanged" VerticalAlignment="Center" />
+                </StackPanel>
+
+                <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="6">
+                    <Button Classes="icon-button" Click="OnCopyClick" ToolTip.Tip="Copy to clipboard">⎘</Button>
+                    <Button Classes="accent" Click="OnSaveClick">Save</Button>
+                </StackPanel>
+
+            </Grid>
+        </Border>
+
+        <!-- Left tool rail -->
+        <Border DockPanel.Dock="Left" Classes="tool-rail">
+            <StackPanel Orientation="Vertical">
+                <ToggleButton x:Name="ToolSelect"    Classes="tool-rail" IsChecked="False" Click="OnToolClick" Tag="Select"    ToolTip.Tip="Select">◉</ToggleButton>
+                <ToggleButton x:Name="ToolArrow"     Classes="tool-rail" IsChecked="True"  Click="OnToolClick" Tag="Arrow"     ToolTip.Tip="Arrow">➤</ToggleButton>
+                <ToggleButton x:Name="ToolRectangle" Classes="tool-rail" IsChecked="False" Click="OnToolClick" Tag="Rectangle" ToolTip.Tip="Rectangle">▭</ToggleButton>
+                <ToggleButton x:Name="ToolEllipse"   Classes="tool-rail" IsChecked="False" Click="OnToolClick" Tag="Ellipse"   ToolTip.Tip="Ellipse">◯</ToggleButton>
+                <ToggleButton x:Name="ToolPen"       Classes="tool-rail" IsChecked="False" Click="OnToolClick" Tag="Pen"       ToolTip.Tip="Pen">✎</ToggleButton>
+                <ToggleButton x:Name="ToolText"      Classes="tool-rail" IsChecked="False" Click="OnToolClick" Tag="Text"      ToolTip.Tip="Text">T</ToggleButton>
+                <ToggleButton x:Name="ToolBlur"      Classes="tool-rail" IsChecked="False" Click="OnToolClick" Tag="Blur"      ToolTip.Tip="Blur">▒</ToggleButton>
+            </StackPanel>
+        </Border>
+
+        <!-- Bottom: document controls -->
+        <Border DockPanel.Dock="Bottom" Classes="footer-strip">
+            <Grid ColumnDefinitions="Auto,*,Auto">
+
+                <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="16" VerticalAlignment="Center">
+
+                    <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                        <TextBlock Text="Background" Foreground="{DynamicResource TextDimBrush}" VerticalAlignment="Center" />
+                        <ComboBox x:Name="BackgroundCombo" Width="100" SelectedIndex="0" SelectionChanged="OnBackgroundChanged">
+                            <ComboBoxItem>None</ComboBoxItem>
+                            <ComboBoxItem>Solid</ComboBoxItem>
+                        </ComboBox>
+                        <ColorPicker x:Name="BackgroundColorPicker" Color="#1E1E1E" Width="40" Height="28" ColorChanged="OnBackgroundColorChanged" IsEnabled="False" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                        <TextBlock Text="Padding" Foreground="{DynamicResource TextDimBrush}" VerticalAlignment="Center" />
+                        <NumericUpDown x:Name="PaddingInput" Minimum="0" Maximum="128" Value="0" Width="100" ValueChanged="OnPaddingChanged" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                        <TextBlock Text="Corners" Foreground="{DynamicResource TextDimBrush}" VerticalAlignment="Center" />
+                        <Slider x:Name="CornerSlider" Width="120" Minimum="0" Maximum="64" Value="0" ValueChanged="OnCornerChanged" VerticalAlignment="Center" />
+                    </StackPanel>
+
+                    <CheckBox x:Name="ShadowToggle" Content="Drop shadow" IsCheckedChanged="OnShadowToggled" VerticalAlignment="Center" />
+
+                </StackPanel>
+
+            </Grid>
+        </Border>
+
+        <!-- Center: scrollable preview surface -->
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <local:DocumentSurface x:Name="Surface"
+                                   Margin="24"
+                                   MinWidth="200" MinHeight="200" />
+        </ScrollViewer>
+
+    </DockPanel>
+
+</Window>

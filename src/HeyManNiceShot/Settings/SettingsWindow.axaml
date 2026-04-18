@@ -1,0 +1,48 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="HeyManNiceShot.Settings.SettingsWindow"
+        Title="HeyManNiceShot Settings"
+        Width="500" SizeToContent="Height"
+        MinWidth="420"
+        TransparencyLevelHint="Mica"
+        Background="{DynamicResource SurfaceBrush}"
+        WindowStartupLocation="CenterScreen"
+        CanResize="False">
+
+    <StackPanel Margin="24" Spacing="18">
+
+        <TextBlock Text="Settings" FontSize="22" FontWeight="SemiBold" />
+
+        <StackPanel Spacing="6">
+            <TextBlock Text="Capture hotkey" Foreground="{DynamicResource TextDimBrush}" />
+            <TextBox x:Name="HotkeyInput" Watermark="Ctrl+Shift+4" />
+            <TextBlock Text="Modifiers + key, e.g. Ctrl+Shift+4 or Alt+F1"
+                       Foreground="{DynamicResource TextMutedBrush}" FontSize="11" />
+        </StackPanel>
+
+        <StackPanel Spacing="6">
+            <TextBlock Text="Save folder" Foreground="{DynamicResource TextDimBrush}" />
+            <Grid ColumnDefinitions="*,8,Auto">
+                <TextBox Grid.Column="0" x:Name="FolderInput" />
+                <Button Grid.Column="2" Click="OnBrowseClick">Browse…</Button>
+            </Grid>
+        </StackPanel>
+
+        <StackPanel Spacing="6">
+            <TextBlock Text="Default save format" Foreground="{DynamicResource TextDimBrush}" />
+            <ComboBox x:Name="FormatCombo" SelectedIndex="0" Width="140" HorizontalAlignment="Left">
+                <ComboBoxItem>PNG</ComboBoxItem>
+                <ComboBoxItem>JPEG</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+
+        <TextBlock x:Name="ErrorText" Foreground="#FF6B6B" IsVisible="False" />
+
+        <StackPanel Orientation="Horizontal" Spacing="8" HorizontalAlignment="Right">
+            <Button Click="OnCancelClick">Cancel</Button>
+            <Button Classes="accent" Click="OnSaveClick">Save</Button>
+        </StackPanel>
+
+    </StackPanel>
+
+</Window>

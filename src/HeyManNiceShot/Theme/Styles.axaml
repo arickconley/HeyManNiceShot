@@ -1,0 +1,122 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Floating toolbar (used over the overlay selection) -->
+    <Style Selector="Border.floating-toolbar">
+        <Setter Property="Background" Value="{DynamicResource ToolbarBackgroundBrush}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource CardRadius}" />
+        <Setter Property="Padding" Value="6" />
+        <Setter Property="BoxShadow" Value="0 4 18 0 #66000000" />
+        <Setter Property="BorderBrush" Value="#33FFFFFF" />
+        <Setter Property="BorderThickness" Value="1" />
+    </Style>
+
+    <!-- Dimension badge near cursor -->
+    <Style Selector="Border.dimension-badge">
+        <Setter Property="Background" Value="{DynamicResource BadgeBackgroundBrush}" />
+        <Setter Property="CornerRadius" Value="{DynamicResource CardRadius}" />
+        <Setter Property="Padding" Value="10,4" />
+        <Setter Property="BoxShadow" Value="0 2 6 0 #66000000" />
+    </Style>
+
+    <Style Selector="Border.dimension-badge TextBlock">
+        <Setter Property="FontFamily" Value="Cascadia Code, Cascadia Mono, Consolas, monospace" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+    </Style>
+
+    <!-- Toolbar action button (icon + tiny label, used inside floating-toolbar) -->
+    <Style Selector="Button.toolbar-action">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="Padding" Value="10,6" />
+        <Setter Property="MinWidth" Value="48" />
+        <Setter Property="Height" Value="44" />
+        <Setter Property="CornerRadius" Value="{DynamicResource MediumRadius}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+    </Style>
+    <Style Selector="Button.toolbar-action:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="#1AFFFFFF" />
+    </Style>
+    <Style Selector="Button.toolbar-action:pressed /template/ ContentPresenter">
+        <Setter Property="Background" Value="#33FFFFFF" />
+    </Style>
+
+    <!-- Tool rail buttons (left-side editor sidebar) -->
+    <Style Selector="ToggleButton.tool-rail">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="Width" Value="44" />
+        <Setter Property="Height" Value="44" />
+        <Setter Property="Margin" Value="0,2" />
+        <Setter Property="CornerRadius" Value="{DynamicResource MediumRadius}" />
+        <Setter Property="Foreground" Value="{DynamicResource TextDimBrush}" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="18" />
+    </Style>
+    <Style Selector="ToggleButton.tool-rail:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="#1AFFFFFF" />
+    </Style>
+    <Style Selector="ToggleButton.tool-rail:checked /template/ ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource AccentBrush}" />
+    </Style>
+    <Style Selector="ToggleButton.tool-rail:checked">
+        <Setter Property="Foreground" Value="#0A0A0A" />
+    </Style>
+
+    <!-- Generic icon button (toolbars, top-right cluster, etc.) -->
+    <Style Selector="Button.icon-button">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="Width" Value="36" />
+        <Setter Property="Height" Value="36" />
+        <Setter Property="CornerRadius" Value="{DynamicResource SmallRadius}" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
+    </Style>
+    <Style Selector="Button.icon-button:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="#1AFFFFFF" />
+    </Style>
+
+    <!-- Primary (accent) button -->
+    <Style Selector="Button.accent">
+        <Setter Property="Background" Value="{DynamicResource AccentPrimaryBrush}" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="Padding" Value="14,6" />
+        <Setter Property="CornerRadius" Value="{DynamicResource SmallRadius}" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+    </Style>
+    <Style Selector="Button.accent:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="#1A8FD9" />
+    </Style>
+
+    <!-- Footer / document controls strip -->
+    <Style Selector="Border.footer-strip">
+        <Setter Property="Background" Value="{DynamicResource SurfaceMutedBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderMutedBrush}" />
+        <Setter Property="BorderThickness" Value="0,1,0,0" />
+        <Setter Property="Padding" Value="12,10" />
+    </Style>
+
+    <!-- Top toolbar -->
+    <Style Selector="Border.top-toolbar">
+        <Setter Property="Background" Value="{DynamicResource SurfaceMutedBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderMutedBrush}" />
+        <Setter Property="BorderThickness" Value="0,0,0,1" />
+        <Setter Property="Padding" Value="10,8" />
+    </Style>
+
+    <!-- Sidebar rail container -->
+    <Style Selector="Border.tool-rail">
+        <Setter Property="Background" Value="{DynamicResource SurfaceMutedBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderMutedBrush}" />
+        <Setter Property="BorderThickness" Value="0,0,1,0" />
+        <Setter Property="Padding" Value="6,8" />
+        <Setter Property="Width" Value="56" />
+    </Style>
+
+</Styles>

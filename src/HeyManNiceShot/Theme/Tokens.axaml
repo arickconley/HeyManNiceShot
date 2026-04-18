@@ -1,0 +1,49 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Accent + selection -->
+    <Color x:Key="AccentColor">#4CC2FF</Color>
+    <Color x:Key="AccentPrimaryColor">#0078D4</Color>
+    <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource AccentColor}" />
+    <SolidColorBrush x:Key="AccentPrimaryBrush" Color="{StaticResource AccentPrimaryColor}" />
+    <SolidColorBrush x:Key="AccentHoverBrush" Color="#66CFFF" />
+    <SolidColorBrush x:Key="SelectionBrush" Color="{StaticResource AccentColor}" />
+
+    <!-- Surfaces -->
+    <SolidColorBrush x:Key="SurfaceBrush" Color="#1F1F1F" />
+    <SolidColorBrush x:Key="SurfaceElevatedBrush" Color="#2C2C2C" />
+    <SolidColorBrush x:Key="SurfaceMutedBrush" Color="#171717" />
+    <SolidColorBrush x:Key="BorderBrush" Color="#3A3A3A" />
+    <SolidColorBrush x:Key="BorderMutedBrush" Color="#262626" />
+
+    <!-- Text -->
+    <SolidColorBrush x:Key="TextBrush" Color="#F0F0F0" />
+    <SolidColorBrush x:Key="TextDimBrush" Color="#A0A0A0" />
+    <SolidColorBrush x:Key="TextMutedBrush" Color="#6E6E6E" />
+
+    <!-- Overlay-specific -->
+    <SolidColorBrush x:Key="OverlayDimBrush" Color="#8C000000" />
+    <SolidColorBrush x:Key="OverlayHoleBorderBrush" Color="{StaticResource AccentColor}" />
+    <SolidColorBrush x:Key="BadgeBackgroundBrush" Color="#D9141414" />
+    <SolidColorBrush x:Key="ToolbarBackgroundBrush" Color="#F21F1F1F" />
+
+    <!-- Corner radii -->
+    <CornerRadius x:Key="SmallRadius">4</CornerRadius>
+    <CornerRadius x:Key="MediumRadius">8</CornerRadius>
+    <CornerRadius x:Key="CardRadius">12</CornerRadius>
+    <CornerRadius x:Key="PillRadius">999</CornerRadius>
+
+    <!-- Spacing (used as Thickness or double) -->
+    <Thickness x:Key="SpacingXS">4</Thickness>
+    <Thickness x:Key="SpacingS">8</Thickness>
+    <Thickness x:Key="SpacingM">12</Thickness>
+    <Thickness x:Key="SpacingL">16</Thickness>
+    <Thickness x:Key="SpacingXL">24</Thickness>
+
+    <x:Double x:Key="SpacingXSValue">4</x:Double>
+    <x:Double x:Key="SpacingSValue">8</x:Double>
+    <x:Double x:Key="SpacingMValue">12</x:Double>
+    <x:Double x:Key="SpacingLValue">16</x:Double>
+    <x:Double x:Key="SpacingXLValue">24</x:Double>
+
+</ResourceDictionary>

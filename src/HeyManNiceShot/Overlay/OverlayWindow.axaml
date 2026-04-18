@@ -1,0 +1,70 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:HeyManNiceShot.Overlay"
+        x:Class="HeyManNiceShot.Overlay.OverlayWindow"
+        TransparencyLevelHint="Transparent"
+        SystemDecorations="None"
+        Background="Transparent"
+        Topmost="True"
+        ShowInTaskbar="False"
+        WindowStartupLocation="Manual"
+        CanResize="False"
+        Cursor="Cross"
+        Focusable="True">
+
+    <Panel x:Name="Root">
+
+        <local:SelectionLayer x:Name="Layer" />
+
+        <Canvas x:Name="Hud">
+
+            <Border x:Name="DimensionBadge"
+                    Classes="dimension-badge"
+                    IsVisible="False"
+                    IsHitTestVisible="False">
+                <TextBlock x:Name="DimensionText" Text="0 × 0" />
+            </Border>
+
+            <Border x:Name="SelectionToolbar"
+                    Classes="floating-toolbar"
+                    IsVisible="False">
+                <StackPanel Orientation="Horizontal" Spacing="2">
+
+                    <Button Classes="toolbar-action" Click="OnCopyClick" ToolTip.Tip="Copy to clipboard">
+                        <StackPanel Orientation="Vertical" Spacing="2" HorizontalAlignment="Center">
+                            <TextBlock Text="⎘" FontSize="18" HorizontalAlignment="Center" />
+                            <TextBlock Text="Copy" FontSize="10" HorizontalAlignment="Center" />
+                        </StackPanel>
+                    </Button>
+
+                    <Button Classes="toolbar-action" Click="OnSaveClick" ToolTip.Tip="Save to folder">
+                        <StackPanel Orientation="Vertical" Spacing="2" HorizontalAlignment="Center">
+                            <TextBlock Text="↓" FontSize="18" HorizontalAlignment="Center" />
+                            <TextBlock Text="Save" FontSize="10" HorizontalAlignment="Center" />
+                        </StackPanel>
+                    </Button>
+
+                    <Button Classes="toolbar-action" Click="OnEditClick" ToolTip.Tip="Open in editor">
+                        <StackPanel Orientation="Vertical" Spacing="2" HorizontalAlignment="Center">
+                            <TextBlock Text="✎" FontSize="18" HorizontalAlignment="Center" />
+                            <TextBlock Text="Edit" FontSize="10" HorizontalAlignment="Center" />
+                        </StackPanel>
+                    </Button>
+
+                    <Border Width="1" Margin="6,4" Background="#33FFFFFF" />
+
+                    <Button Classes="toolbar-action" Click="OnCancelClick" ToolTip.Tip="Cancel (Esc)">
+                        <StackPanel Orientation="Vertical" Spacing="2" HorizontalAlignment="Center">
+                            <TextBlock Text="✕" FontSize="18" HorizontalAlignment="Center" />
+                            <TextBlock Text="Cancel" FontSize="10" HorizontalAlignment="Center" />
+                        </StackPanel>
+                    </Button>
+
+                </StackPanel>
+            </Border>
+
+        </Canvas>
+
+    </Panel>
+
+</Window>
