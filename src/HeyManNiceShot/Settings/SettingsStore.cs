@@ -26,8 +26,6 @@ public sealed class SettingsStore
         if (!string.IsNullOrEmpty(dir)) Directory.CreateDirectory(dir);
     }
 
-    public string Path => _path;
-
     public AppSettings Load()
     {
         if (!File.Exists(_path)) return AppSettings.CreateDefault();

@@ -1,4 +1,5 @@
 using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using Avalonia.Threading;
@@ -11,7 +12,7 @@ namespace HeyManNiceShot;
 
 public partial class App : Application
 {
-    public static App Current { get; private set; } = null!;
+    public static new App Current => (App)Application.Current!;
 
     public SettingsStore SettingsStore { get; private set; } = null!;
     public AppSettings Settings { get; private set; } = null!;
@@ -26,7 +27,6 @@ public partial class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
-        Current = this;
         WireCrashHandlers();
 
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
