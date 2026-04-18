@@ -4,7 +4,11 @@
              RequestedThemeVariant="Dark">
 
     <Application.Resources>
-        <ResourceInclude Source="avares://HeyManNiceShot/Theme/Tokens.axaml" />
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="avares://HeyManNiceShot/Theme/Tokens.axaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 
     <Application.Styles>

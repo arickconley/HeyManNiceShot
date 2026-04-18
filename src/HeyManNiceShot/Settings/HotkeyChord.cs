@@ -48,10 +48,11 @@ public sealed record HotkeyChord(KeyModifiers Modifiers, Key Key)
 
     private static bool TryParseKey(string s, out Key key)
     {
-        if (Enum.TryParse(s, ignoreCase: true, out key)) return true;
-        if (s.Length == 1 && char.IsDigit(s[0]))
-            return Enum.TryParse($"D{s}", ignoreCase: true, out key);
-        return false;
+        // Single digits must be remapped to D0..D9 first — otherwise Enum.TryParse
+        // interprets "4" as the underlying integer value (which is Key.LineFeed).
+        if (s.Length == 1 && char.IsDigit(s[0]) && Enum.TryParse($"D{s}", ignoreCase: true, out key))
+            return true;
+        return Enum.TryParse(s, ignoreCase: true, out key) && !char.IsDigit(s[0]);
     }
 
     private static string KeyDisplay(Key key)
