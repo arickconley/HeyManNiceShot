@@ -1,0 +1,60 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Test
+        run: dotnet test --configuration Release
+
+      - name: Publish win-x64
+        run: >
+          dotnet publish src/HeyManNiceShot/HeyManNiceShot.csproj
+          --configuration Release
+          --runtime win-x64
+          --self-contained true
+          --output publish/win-x64
+
+      - name: Publish win-arm64
+        run: >
+          dotnet publish src/HeyManNiceShot/HeyManNiceShot.csproj
+          --configuration Release
+          --runtime win-arm64
+          --self-contained true
+          --output publish/win-arm64
+
+      - name: Package zips
+        shell: pwsh
+        run: |
+          $version = "${{ github.ref_name }}"
+          Compress-Archive -Path publish/win-x64/*   -DestinationPath "HeyManNiceShot-$version-win-x64.zip"
+          Compress-Archive -Path publish/win-arm64/* -DestinationPath "HeyManNiceShot-$version-win-arm64.zip"
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            HeyManNiceShot-*-win-x64.zip
+            HeyManNiceShot-*-win-arm64.zip
+          generate_release_notes: true
+          draft: false
+          prerelease: ${{ contains(github.ref_name, '-') }}
